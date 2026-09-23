@@ -2,9 +2,21 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Invitation Mariage - Gloria & Cedric</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation Mariage - Cedric & Gloria</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+        :root {
+            --bg-color: #f4f0f5;
+            --card-bg: #ffffff;
+            --primary: #6E1D3A;   /* Bordeaux */
+            --secondary: #9086B9; /* Mauve */
+            --accent: #D37A5F;    /* Terracotta */
+            --gold: #D4AA37;      /* Or Champagne */
+            --text-dark: #2c2c2c;
+            --text-muted: #666666;
+        }
 
         * {
             box-sizing: border-box;
@@ -13,25 +25,27 @@
         }
 
         body {
-            background-color: #f2edf3; /* Fond doux teinté mauve très clair */
+            background-color: var(--bg-color);
             font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 20px 10px;
         }
 
         .invitation-card {
-            width: 450px;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(110, 29, 58, 0.12); /* Ombre douce bordeaux */
+            width: 100%;
+            max-width: 460px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(110, 29, 58, 0.12);
             overflow: hidden;
             text-align: center;
-            color: #333333;
+            color: var(--text-dark);
             position: relative;
-            border: 1px solid #e2d8e5;
+            border: 1px solid #e8dfea;
+            transition: transform 0.3s ease;
         }
 
         .photo-container {
@@ -53,7 +67,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 40%;
+            height: 45%;
             background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
         }
 
@@ -64,117 +78,190 @@
         }
 
         .monogram {
-            width: 80px;
-            height: 80px;
+            width: 76px;
+            height: 76px;
             margin: 0 auto;
-            border: 1px solid #D4AA37; /* Or Champagne */
+            border: 1px solid var(--gold);
             transform: rotate(45deg);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #ffffff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            background: var(--card-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .monogram-text {
             transform: rotate(-45deg);
             font-family: 'Playfair Display', serif;
-            font-size: 26px;
+            font-size: 24px;
             font-style: italic;
-            color: #6E1D3A; /* Bordeaux accentué */
+            color: var(--primary);
             font-weight: 600;
         }
 
         .content {
-            padding: 20px 35px 35px 35px;
+            padding: 20px 30px 35px 30px;
         }
 
         .label-invitation {
             font-family: 'Cinzel', serif;
             letter-spacing: 4px;
-            font-size: 13px;
-            color: #9086B9; /* Mauve */
-            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--secondary);
+            margin-bottom: 6px;
             text-transform: uppercase;
             font-weight: 600;
         }
 
         .couple-names {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            color: #6E1D3A; /* Bordeaux principal */
-            margin-bottom: 20px;
+            font-size: 30px;
+            color: var(--primary);
+            margin-bottom: 18px;
             font-weight: 600;
         }
 
         .families-text {
             font-size: 11px;
             line-height: 1.6;
-            color: #555555;
-            margin-bottom: 20px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .families-text strong {
-            color: #6E1D3A; /* Bordeaux */
+            color: var(--primary);
             font-weight: 600;
+        }
+
+        .guest-box {
+            display: inline-block;
+            background-color: #faf5f7;
+            border: 1px dashed var(--gold);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 18px;
         }
 
         .details-text {
             font-size: 12px;
-            color: #666666;
+            color: var(--text-muted);
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             font-style: italic;
         }
 
         .schedule-box {
-            background-color: #f8f3f6; /* Fond très léger mauve/rose */
-            border-top: 1px solid #d4aa37; /* Or Champagne */
-            border-bottom: 1px solid #d4aa37;
-            padding: 14px;
-            margin-bottom: 20px;
+            background-color: #fbf8fa;
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding: 16px 12px;
+            margin-bottom: 22px;
         }
 
         .schedule-date {
             font-family: 'Cinzel', serif;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
-            color: #6E1D3A; /* Bordeaux */
-            margin-bottom: 6px;
+            color: var(--primary);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
 
         .schedule-time {
             font-size: 11px;
-            color: #444444;
+            color: var(--text-dark);
             display: flex;
             justify-content: space-around;
         }
 
         .schedule-time strong {
-            color: #D37A5F; /* Terracotta */
+            color: var(--accent);
+        }
+
+        /* Compte à rebours */
+        .countdown-title {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .countdown-item {
+            background: #fdfafc;
+            border: 1px solid #ebdbe2;
+            border-radius: 8px;
+            padding: 6px 10px;
+            min-width: 55px;
+        }
+
+        .countdown-value {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .countdown-label {
+            font-size: 8px;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
         .location-box {
             font-size: 11px;
-            color: #444444;
+            color: var(--text-dark);
             line-height: 1.5;
+            margin-bottom: 24px;
         }
 
         .location-title {
             font-family: 'Cinzel', serif;
             font-weight: 600;
-            font-size: 12px;
-            color: #6E1D3A; /* Bordeaux */
+            font-size: 13px;
+            color: var(--primary);
             margin-bottom: 4px;
         }
 
         .repere {
-            margin-top: 6px;
+            margin-top: 4px;
             font-style: italic;
-            color: #D37A5F; /* Terracotta */
+            color: var(--accent);
             font-weight: 500;
+        }
+
+        /* Bouton d'action RSVP */
+        .btn-rsvp {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, #8b234a 100%);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(110, 29, 58, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-rsvp:hover {
+            opacity: 0.92;
+            box-shadow: 0 6px 16px rgba(110, 29, 58, 0.35);
         }
     </style>
 </head>
@@ -183,7 +270,7 @@
     <div class="invitation-card">
         <!-- Photo du couple -->
         <div class="photo-container">
-            <img src="image.jpeg" alt="Gloria et Cedric">
+            <img src="image.jpeg" alt="Cedric et Gloria">
             <div class="photo-overlay"></div>
         </div>
 
@@ -202,10 +289,14 @@
             <div class="families-text">
                 Ensemble avec leurs familles,<br>
                 <strong>MWEMWE</strong> & <strong>KANYANGU</strong><br>
-                ont la joie de vous inviter à célébrer leur union. <br>
+                ont la joie de vous inviter à célébrer leur union.
             </div>
-<strong>Mr. Miracle TAMBWE </strong><br>
-<p></p>
+
+            <!-- Nom de l'invité -->
+            <div class="guest-box">
+                Invité d'honneur : Mr. Miracle TAMBWE
+            </div>
+
             <div class="details-text">
                 Nos familles seraient honorées de votre présence pour partager avec nous ce moment unique et précieux.
             </div>
@@ -220,15 +311,67 @@
                 </div>
             </div>
 
+            <!-- Compte à Rebours -->
+            <div class="countdown-title">Le Grand Jour dans</div>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Jours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Heures</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Min</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Sec</div>
+                </div>
+            </div>
+
             <!-- Lieu -->
             <div class="location-box">
                 <div class="location-title">Espace Colonel Nyombi</div>
-                Chez Colonel Nyombi, N°23, Avenue Mokari, Q/ Punda<br>
+                N°23, Avenue Mokari, Q/ Punda<br>
                 Commune de Ngaliema, Kinshasa - RDC
                 <div class="repere">Repère : Entrée Route Okapi</div>
             </div>
+
+            <!-- Bouton Confirmation WhatsApp -->
+            <a href="https://wa.me/?text=Bonjour,%20je%20confirme%20ma%20présence%20au%20mariage%20de%20Cedric%20et%20Gloria !" target="_blank" class="btn-rsvp">
+                Confirmer ma présence
+            </a>
         </div>
     </div>
 
+    <script>
+        // Date cible : 10 Octobre 2026 à 09:00:00
+        const targetDate = new Date('2026-10-10T09:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            } else {
+                document.querySelector('.countdown-container').innerHTML = "<div style='color: var(--primary); font-weight: bold;'>C'est le grand jour !</div>";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 </body>
 </html>
