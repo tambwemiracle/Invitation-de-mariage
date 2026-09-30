@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation Mariage - Cedric & Gloria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+        :root {
+            --bg-color: #f4f0f5;
+            --card-bg: #ffffff;
+            --primary: #6E1D3A;   /* Bordeaux */
+            --secondary: #9086B9; /* Mauve */
+            --accent: #D37A5F;    /* Terracotta */
+            --gold: #D4AA37;      /* Or Champagne */
+            --text-dark: #2c2c2c;
+            --text-muted: #666666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 10px;
+        }
+
+        .invitation-card {
+            width: 100%;
+            max-width: 460px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(110, 29, 58, 0.12);
+            overflow: hidden;
+            text-align: center;
+            color: var(--text-dark);
+            position: relative;
+            border: 1px solid #e8dfea;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-container {
+            width: 100%;
+            height: 380px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 45%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+        }
+
+        .monogram-container {
+            margin-top: -45px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .monogram {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto;
+            border: 1px solid var(--gold);
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .monogram-text {
+            transform: rotate(-45deg);
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-style: italic;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 20px 30px 35px 30px;
+        }
+
+        .label-invitation {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 4px;
+            font-size: 12px;
+            color: var(--secondary);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .couple-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            color: var(--primary);
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        .families-text {
+            font-size: 11px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .families-text strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .guest-box {
+            display: inline-block;
+            background-color: #faf5f7;
+            border: 1px dashed var(--gold);
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
+
+        .table-badge {
+            display: block;
+            margin-top: 4px;
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .details-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 22px;
+            font-style: italic;
+        }
+
+        .schedule-box {
+            background-color: #fbf8fa;
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding: 16px 12px;
+            margin-bottom: 22px;
+        }
+
+        .schedule-date {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .schedule-time {
+            font-size: 11px;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .schedule-time strong {
+            color: var(--accent);
+        }
+
+        .countdown-title {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .countdown-item {
+            background: #fdfafc;
+            border: 1px solid #ebdbe2;
+            border-radius: 8px;
+            padding: 6px 10px;
+            min-width: 55px;
+        }
+
+        .countdown-value {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .countdown-label {
+            font-size: 8px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .location-box {
+            font-size: 11px;
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .location-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .repere {
+            margin-top: 4px;
+            font-style: italic;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .dresscode-section {
+            margin-bottom: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dresscode-box {
+            background-color: #faf7f9;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid #efe4eb;
+        }
+
+        .dresscode-title {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .color-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+
+        .color-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .color-name {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .pagne-img {
+            width: 100%;
+            max-height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            border: 1px solid var(--gold);
+            display: block;
+        }
+
+        .btn-rsvp {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, #8b234a 100%);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(110, 29, 58, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-rsvp:hover {
+            opacity: 0.92;
+            box-shadow: 0 6px 16px rgba(110, 29, 58, 0.35);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invitation-card">
+        <div class="photo-container">
+            <img src="image.jpeg" alt="Gloria et Cedric">
+            <div class="photo-overlay"></div>
+        </div>
+
+        <div class="monogram-container">
+            <div class="monogram">
+                <span class="monogram-text">CG</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="label-invitation">Invitation</div>
+            <div class="couple-names">Cedric & Gloria</div>
+
+            <div class="families-text">
+                Ensemble avec leurs familles,<br>
+                <strong>KANYANGU</strong> & <strong>MWEMWE</strong><br>
+                ont la joie de vous inviter à célébrer leur union.
+            </div>
+
+            <!-- Nom de l'invité & Table -->
+            <div class="guest-box">
+                <span id="guest-name">Chargement de l'invitation...</span>
+                <span id="guest-table" class="table-badge"></span>
+            </div>
+
+            <div class="details-text">
+                Nos familles seraient honorées de votre présence pour partager ce moment unique et précieux.
+            </div>
+
+            <div class="schedule-box">
+                <div class="schedule-date">Samedi 10 Octobre 2026</div>
+                <div class="schedule-time">
+                    <span><strong>Civil :</strong> 09h00 Précises</span>
+                    <span>•</span>
+                    <span><strong>Coutumier :</strong> 18h00 Précises</span>
+                </div>
+            </div>
+
+            <div class="countdown-title">Le Grand Jour dans</div>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Jours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Heures</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Min</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Sec</div>
+                </div>
+            </div>
+
+            <div class="location-box">
+                <div class="location-title">Espace Colonel Nyombi</div>
+                N°23, Avenue Mokari, Q/ Punda<br>
+                Commune de Ngaliema, Kinshasa - RDC
+                <div class="repere">Repère : Entrée Route Okapi</div>
+            </div>
+
+            <!-- Section Dress Code Compacte -->
+            <div class="dresscode-section">
+                <!-- Mariage Civil : Texte + Pastilles de couleur -->
+                <div class="dresscode-box">
+                    <div class="dresscode-title">Dress Code - Mariage Civil</div>
+                    <div class="color-list">
+                        <div class="color-item">
+                            <span class="color-dot" style="background-color: #9086B9;"></span>
+                            <span class="color-name">Mauve</span>
+                        </div>
+                        <div class="color-item">
+                            <span class="color-dot" style="background-color: #D49AA7;"></span>
+                            <span class="color-name">Vieux Rose</span>
+                        </div>
+                        <div class="color-item">
+                            <span class="color-dot" style="background-color: #6E1D3A;"></span>
+                            <span class="color-name">Bordeaux</span>
+                        </div>
+                        <div class="color-item">
+                            <span class="color-dot" style="background-color: #D37A5F;"></span>
+                            <span class="color-name">Terracotta</span>
+                        </div>
+                        <div class="color-item">
+                            <span class="color-dot" style="background-color: #D4AA37;"></span>
+                            <span class="color-name">Or Champagne</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mariage Coutumier : Photo du pagne au format restreint -->
+                <div class="dresscode-box">
+                    <div class="dresscode-title">Dress Code - Mariage Coutumier</div>
+                    <img src="tenue.png" alt="Pagne Coutumier" class="pagne-img">
+                </div>
+            </div>
+
+            <a id="btn-whatsapp" href="#" target="_blank" class="btn-rsvp">
+                Confirmer ma présence
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const existingPrefixes = [
+            'MAMAN', 'PAPA', 'DR', 'IR', 'PASTEUR', 'PA ', 'BERGÉ', 'BERGE',
+            'FR ', 'SR ', 'VX ', 'DA ', 'MA ', 'BI ', 'KA ', 'MR', 'MME', 'MLLE', 'M.'
+        ];
+
+        const database = {
+            "maman florence": { name: "MAMAN FLORENCE", table: "KABALO", couple: false },
+            "ir georges": { name: "Ir GEORGES", table: "KABALO", couple: false },
+            "julie somo": { name: "JULIE SOMO", table: "KABALO", couple: true },
+            "kapitaini": { name: "KAPITAINI", table: "KABALO", couple: true },
+            "dorcas shongo": { name: "DORCAS SHONGO", table: "KABALO", couple: true },
+            "esther kasongo": { name: "ESTHER KASONGO", table: "KABALO", couple: true },
+            "vx phillippe": { name: "Vx PHILLIPPE", table: "KITULE", couple: true },
+            "kaloshi": { name: "KALOSHI", table: "KITULE", couple: false },
+            "maman nadine": { name: "MAMAN NADINE", table: "KITULE", couple: false },
+            "meme": { name: "MEME", table: "KITULE", couple: false },
+            "blessing": { name: "BLESSING", table: "KITULE", couple: false },
+            "papa franck": { name: "PAPA FRANCK", table: "KITULE", couple: true },
+            "souvenir": { name: "SOUVENIR", table: "KITULE", couple: false },
+            "sandrine mangaza": { name: "SANDRINE MANGAZA", table: "KITULE", couple: false },
+            "marie safi": { name: "MARIE SAFI", table: "KITANCHI", couple: false },
+            "yvonne kanvu": { name: "YVONNE KANVU", table: "KITANCHI", couple: false },
+            "hortense kanvu": { name: "HORTENSE KANVU", table: "KITANCHI", couple: false },
+            "doudou": { name: "DOUDOU", table: "KITANCHI", couple: false },
+            "emmanuel somo": { name: "EMMANUEL SOMO", table: "KITANCHI", couple: false },
+            "bruno": { name: "BRUNO", table: "KITANCHI", couple: false },
+            "jonathan": { name: "JONATHAN", table: "ETUSHA", couple: false },
+            "ma francine": { name: "MA FRANCINE", table: "KITANCHI", couple: false },
+            "cecile": { name: "CECILE", table: "KITANCHI", couple: false },
+            "da bibishe": { name: "DA BIBISHE", table: "KITANCHI", couple: false },
+            "jc kithima": { name: "JC KITHIMA", table: "4 KANSIMBA", couple: true },
+            "saleh bilungi": { name: "SALEH BILUNGI", table: "4 KANSIMBA", couple: true },
+            "maman helene": { name: "MAMAN HELENE", table: "4 KANSIMBA", couple: false },
+            "maman bakesha": { name: "MAMAN BAKESHA", table: "4 KANSIMBA", couple: false },
+            "melissa nayele": { name: "MELISSA NAYELE", table: "4 KANSIMBA", couple: false },
+            "dr robert": { name: "Dr ROBERT", table: "4 KANSIMBA", couple: true },
+            "dr eunice": { name: "Dr EUNICE", table: "4 KANSIMBA", couple: false },
+            "elodi": { name: "ELODI", table: "MILUMBU", couple: true },
+            "dr kakongo": { name: "Dr KAKONGO", table: "MILUMBU", couple: false },
+            "israel  pyame": { name: "ISRAEL  PYAME", table: "MILUMBU", couple: true },
+            "dr gauthier": { name: "Dr GAUTHIER", table: "MILUMBU", couple: false },
+            "dr josue": { name: "Dr JOSUE", table: "MILUMBU", couple: false },
+            "dr doris": { name: "Dr DORIS", table: "MILUMBU", couple: false },
+            "dr kendo vivi": { name: "Dr KENDO VIVI", table: "MILUMBU", couple: false },
+            "dr ngongo tshonda": { name: "Dr NGONGO TSHONDA", table: "MILUMBU", couple: false },
+            "dr malonda": { name: "Dr MALONDA", table: "KYATO", couple: false },
+            "dr luk": { name: "Dr LUK", table: "KYATO", couple: false },
+            "chanty": { name: "CHANTY", table: "KYATO", couple: false },
+            "bolola": { name: "BOLOLA", table: "KYATO", couple: false },
+            "yekwa": { name: "YEKWA", table: "KYATO", couple: false },
+            "jude": { name: "JUDE", table: "KYATO", couple: false },
+            "nathan": { name: "Nathan", table: "EBALA", couple: false },
+            "malouda": { name: "MALOUDA", table: "KYATO", couple: true },
+            "dr amisi": { name: "Dr AMISI", table: "KYATO", couple: false },
+            "papa mabaluka": { name: "PAPA MABALUKA", table: "MANONA", couple: true },
+            "yuse": { name: "YUSE", table: "MANONA", couple: false },
+            "julde": { name: "JULDE", table: "MANONA", couple: false },
+            "fidel gaëlla": { name: "Fidel gaëlla", table: "MANONA", couple: false },
+            "thomas": { name: "THOMAS", table: "ELEMBE", couple: true },
+            "tshamba": { name: "TSHAMBA", table: "ELEMBE", couple: true },
+            "celestin ngoy": { name: "CELESTIN NGOY", table: "ELEMBE", couple: true },
+            "bienvenu": { name: "BIENVENU", table: "ELEMBE", couple: true },
+            "souverain": { name: "SOUVERAIN", table: "ELEMBE", couple: true },
+            "sumbu": { name: "SUMBU", table: "EBALA", couple: true },
+            "andre sumbu": { name: "ANDRE SUMBU", table: "EBALA", couple: true },
+            "mado sumbu": { name: "MADO SUMBU", table: "EBALA", couple: false },
+            "maman sumbu": { name: "MAMAN SUMBU", table: "EBALA", couple: false },
+            "athana sumbu": { name: "ATHANA SUMBU", table: "EBALA", couple: true },
+            "fr john": { name: "FR JOHN", table: "EBALA", couple: false },
+            "fr jean": { name: "FR JEAN", table: "EBALA", couple: false },
+            "armel": { name: "ARMEL", table: "EFUNGU", couple: false },
+            "gaston": { name: "GASTON", table: "EFUNGU", couple: false },
+            "bi jeannette": { name: "BI JEANNETTE", table: "EFUNGU", couple: false },
+            "landry": { name: "LANDRY", table: "EFUNGU", couple: false },
+            "precidie": { name: "PRECIDIE", table: "EFUNGU", couple: false },
+            "da orick": { name: "DA ORICK", table: "EFUNGU", couple: false },
+            "henry": { name: "HENRY", table: "EFUNGU", couple: false },
+            "bi fatuma": { name: "BI FATUMA", table: "EFUNGU", couple: false },
+            "arielle": { name: "ARIELLE", table: "EFUNGU", couple: false },
+            "ka fonda": { name: "KA FONDA", table: "EFUNGU", couple: false },
+            "fr daniel": { name: "Fr DANIEL", table: "KILO KASONGO", couple: false },
+            "fr beni": { name: "Fr BENI", table: "KILO KASONGO", couple: false },
+            "fr nehemie": { name: "Fr NEHEMIE", table: "KILO KASONGO", couple: false },
+            "sr dorcas lukoki": { name: "Sr DORCAS LUKOKI", table: "KILO KASONGO", couple: false },
+            "dr deborah": { name: "Dr DEBORAH", table: "KILO KASONGO", couple: false },
+            "dr ketsia": { name: "Dr KETSIA", table: "KILO KASONGO", couple: false },
+            "aristote": { name: "ARISTOTE", table: "KILO KASONGO", couple: false },
+            "berdy": { name: "BERDY", table: "KILO KASONGO", couple: false },
+            "josue": { name: "JOSUE", table: "KILO KASONGO", couple: false },
+            "caleb": { name: "CALEB", table: "KILO KASONGO", couple: false },
+            "sr berlinne": { name: "SR BERLINNE", table: "ETUSHA", couple: false },
+            "divine": { name: "DIVINE", table: "ETUSHA", couple: false },
+            "christelle": { name: "CHRISTELLE", table: "ETUSHA", couple: false },
+            "synthia": { name: "SYNTHIA", table: "ETUSHA", couple: false },
+            "israella": { name: "ISRAELLA", table: "ETUSHA", couple: false },
+            "michee": { name: "MICHEE", table: "ETUSHA", couple: false },
+            "grace": { name: "GRACE", table: "ETUSHA", couple: false },
+            "samuel": { name: "SAMUEL", table: "ETUSHA", couple: false },
+            "keren": { name: "KEREN", table: "ETUSHA", couple: false },
+            "papa kalala": { name: "PAPA KALALA", table: "KAMWEMO", couple: true },
+            "pa paulin": { name: "PA PAULIN", table: "KAMWEMO", couple: true },
+            "pa dona": { name: "PA DONA", table: "KAMWEMO", couple: true },
+            "ma clarisse": { name: "MA CLARISSE", table: "KAMWEMO", couple: true },
+            "isac": { name: "ISAC", table: "KAMWEMO", couple: false },
+            "exauce": { name: "EXAUCE", table: "KAMWEMO", couple: false },
+            "pasteur jean": { name: "Pasteur JEAN", table: "ESHADIKA", couple: true },
+            "pasteur fredy": { name: "Pasteur FREDY", table: "ESHADIKA", couple: true },
+            "pasteur richard": { name: "Pasteur RICHARD", table: "ESHADIKA", couple: true },
+            "papa gaela": { name: "PAPA GAELA", table: "ESHADIKA", couple: true },
+            "bergé gorlin": { name: "Bergé GORLIN", table: "ESHADIKA", couple: true },
+            "maman colette": { name: "MAMAN COLETTE", table: "EPINGA", couple: false },
+            "yvette": { name: "YVETTE", table: "EPINGA", couple: false },
+            "maman henriette": { name: "MAMAN HENRIETTE", table: "EPINGA", couple: false },
+            "maman julie": { name: "MAMAN JULIE", table: "EPINGA", couple: false },
+            "abigaelle": { name: "ABIGAELLE", table: "EPINGA", couple: false }
+        };
+
+        function formatNameWithPrefix(name, isCouple) {
+            const upperName = name.toUpperCase().trim();
+            const hasExistingPrefix = existingPrefixes.some(p => upperName.startsWith(p));
+
+            if (hasExistingPrefix) {
+                return name;
+            } else {
+                if (isCouple) {
+                    return `M. et Mme ${name}`;
+                } else {
+                    return `Mr / Mme / Mlle ${name}`;
+                }
+            }
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const rawNomParam = urlParams.get('nom');
+
+        let displayName = "Invité(e)";
+        let displayTable = "";
+        let whatsappMessageName = "un invité";
+
+        if (rawNomParam) {
+            const cleanKey = rawNomParam.trim().toLowerCase();
+            if (database[cleanKey]) {
+                const guestObj = database[cleanKey];
+                const formattedName = formatNameWithPrefix(guestObj.name, guestObj.couple);
+                
+                if (guestObj.couple) {
+                    displayName = `Couple : ${formattedName}`;
+                } else {
+                    displayName = `Invité(e) : ${formattedName}`;
+                }
+                
+                displayTable = `Table attribuée : ${guestObj.table}`;
+                whatsappMessageName = formattedName;
+            } else {
+                const formattedName = formatNameWithPrefix(rawNomParam, false);
+                displayName = `Invité(e) : ${formattedName}`;
+                whatsappMessageName = formattedName;
+            }
+        }
+
+        document.getElementById('guest-name').innerText = displayName;
+        document.getElementById('guest-table').innerText = displayTable;
+
+        const phone = "243824222508";
+        const message = `Bonjour, je suis ${whatsappMessageName}. Je confirme ma présence au mariage civil et coutumier de Cedric et Gloria !`;
+        const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        document.getElementById('btn-whatsapp').href = whatsappUrl;
+
+        const targetDate = new Date('2026-10-10T09:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            } else {
+                document.querySelector('.countdown-container').innerHTML = "<div style='color: var(--primary); font-weight: bold;'>C'est le grand jour !</div>";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
