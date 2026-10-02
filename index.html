@@ -407,7 +407,7 @@
 
             <!-- Section Dress Code Compacte -->
             <div class="dresscode-section">
-                <!-- Mariage Civil : Texte + Pastilles de couleur -->
+                <!-- Mariage Civil -->
                 <div class="dresscode-box">
                     <div class="dresscode-title">Dress Code - Mariage Civil</div>
                     <div class="color-list">
@@ -434,7 +434,7 @@
                     </div>
                 </div>
 
-                <!-- Mariage Coutumier : Photo du pagne au format restreint -->
+                <!-- Mariage Coutumier -->
                 <div class="dresscode-box">
                     <div class="dresscode-title">Dress Code - Mariage Coutumier</div>
                     <img src="tenue.png" alt="Pagne Coutumier" class="pagne-img">
@@ -449,10 +449,11 @@
 
     <script>
         const existingPrefixes = [
-            'MAMAN', 'PAPA', 'DR', 'IR', 'PASTEUR', 'PA ', 'BERGÉ', 'BERGE',
+            'MAMAN', 'PAPA', 'DR', 'IR', 'PASTEUR', 'PA ', 'BERGÉ', 'BERGER', 'BERGE',
             'FR ', 'SR ', 'VX ', 'DA ', 'MA ', 'BI ', 'KA ', 'MR', 'MME', 'MLLE', 'M.'
         ];
 
+        // Base de données exacte mise à jour d'après l'image reçue
         const database = {
             "maman florence": { name: "MAMAN FLORENCE", table: "KABALO", couple: false },
             "ir georges": { name: "Ir GEORGES", table: "KABALO", couple: false },
@@ -474,50 +475,46 @@
             "doudou": { name: "DOUDOU", table: "KITANCHI", couple: false },
             "emmanuel somo": { name: "EMMANUEL SOMO", table: "KITANCHI", couple: false },
             "bruno": { name: "BRUNO", table: "KITANCHI", couple: false },
-            "jonathan": { name: "JONATHAN", table: "ETUSHA", couple: false },
+            "jonathan": { name: "JONATHAN", table: "KITANCHI", couple: false },
             "ma francine": { name: "MA FRANCINE", table: "KITANCHI", couple: false },
             "cecile": { name: "CECILE", table: "KITANCHI", couple: false },
             "da bibishe": { name: "DA BIBISHE", table: "KITANCHI", couple: false },
-            "jc kithima": { name: "JC KITHIMA", table: "4 KANSIMBA", couple: true },
-            "saleh bilungi": { name: "SALEH BILUNGI", table: "4 KANSIMBA", couple: true },
-            "maman helene": { name: "MAMAN HELENE", table: "4 KANSIMBA", couple: false },
-            "maman bakesha": { name: "MAMAN BAKESHA", table: "4 KANSIMBA", couple: false },
-            "melissa nayele": { name: "MELISSA NAYELE", table: "4 KANSIMBA", couple: false },
-            "dr robert": { name: "Dr ROBERT", table: "4 KANSIMBA", couple: true },
-            "dr eunice": { name: "Dr EUNICE", table: "4 KANSIMBA", couple: false },
-            "elodi": { name: "ELODI", table: "MILUMBU", couple: true },
+            "jc kithima": { name: "JC KITHIMA", table: "KANSIMBA", couple: true },
+            "saleh bilungi": { name: "SALEH BILUNGI", table: "KANSIMBA", couple: true },
+            "maman helene": { name: "MAMAN HELENE", table: "KANSIMBA", couple: false },
+            "maman bakesha": { name: "MAMAN BAKESHA", table: "KANSIMBA", couple: false },
+            "melissa nayele": { name: "MELISSA NAYELE", table: "KANSIMBA", couple: false },
+            "dr robert": { name: "Dr ROBERT", table: "KANSIMBA", couple: true },
+            "dr eunice": { name: "Dr EUNICE", table: "KANSIMBA", couple: false },
             "dr kakongo": { name: "Dr KAKONGO", table: "MILUMBU", couple: false },
-            "israel  pyame": { name: "ISRAEL  PYAME", table: "MILUMBU", couple: true },
+            "israel pyame": { name: "ISRAEL PYAME", table: "MILUMBU", couple: true },
             "dr gauthier": { name: "Dr GAUTHIER", table: "MILUMBU", couple: false },
             "dr josue": { name: "Dr JOSUE", table: "MILUMBU", couple: false },
             "dr doris": { name: "Dr DORIS", table: "MILUMBU", couple: false },
             "dr kendo vivi": { name: "Dr KENDO VIVI", table: "MILUMBU", couple: false },
-            "dr ngongo tshonda": { name: "Dr NGONGO TSHONDA", table: "MILUMBU", couple: false },
             "dr malonda": { name: "Dr MALONDA", table: "KYATO", couple: false },
             "dr luk": { name: "Dr LUK", table: "KYATO", couple: false },
             "chanty": { name: "CHANTY", table: "KYATO", couple: false },
-            "bolola": { name: "BOLOLA", table: "KYATO", couple: false },
             "yekwa": { name: "YEKWA", table: "KYATO", couple: false },
             "jude": { name: "JUDE", table: "KYATO", couple: false },
-            "nathan": { name: "Nathan", table: "EBALA", couple: false },
+            "nathan": { name: "NATHAN", table: "KYATO", couple: false },
             "malouda": { name: "MALOUDA", table: "KYATO", couple: true },
-            "dr amisi": { name: "Dr AMISI", table: "KYATO", couple: false },
             "papa mabaluka": { name: "PAPA MABALUKA", table: "MANONA", couple: true },
-            "yuse": { name: "YUSE", table: "MANONA", couple: false },
-            "julde": { name: "JULDE", table: "MANONA", couple: false },
             "fidel gaëlla": { name: "Fidel gaëlla", table: "MANONA", couple: false },
             "thomas": { name: "THOMAS", table: "ELEMBE", couple: true },
-            "tshamba": { name: "TSHAMBA", table: "ELEMBE", couple: true },
-            "celestin ngoy": { name: "CELESTIN NGOY", table: "ELEMBE", couple: true },
-            "bienvenu": { name: "BIENVENU", table: "ELEMBE", couple: true },
-            "souverain": { name: "SOUVERAIN", table: "ELEMBE", couple: true },
-            "sumbu": { name: "SUMBU", table: "EBALA", couple: true },
-            "andre sumbu": { name: "ANDRE SUMBU", table: "EBALA", couple: true },
+            "tshamba": { name: "TSHAMBA", table: "ELEMBE", couple: false },
+            "celestin ngoy mwemwe": { name: "CELESTIN NGOY MWEMWE", table: "ELEMBE", couple: true },
+            "bienvenu ikunzi": { name: "BIENVENU IKUNZI", table: "ELEMBE", couple: true },
+            "papa gaella": { name: "Papa GAELLA", table: "ELEMBE", couple: true },
+            "sumbu": { name: "SUMBU", table: "EBALA", couple: false },
+            "andre sumbu": { name: "ANDRE SUMBU", table: "EBALA", couple: false },
             "mado sumbu": { name: "MADO SUMBU", table: "EBALA", couple: false },
             "maman sumbu": { name: "MAMAN SUMBU", table: "EBALA", couple: false },
-            "athana sumbu": { name: "ATHANA SUMBU", table: "EBALA", couple: true },
-            "fr john": { name: "FR JOHN", table: "EBALA", couple: false },
-            "fr jean": { name: "FR JEAN", table: "EBALA", couple: false },
+            "gustave sumbu": { name: "Gustave SUMBU", table: "EBALA", couple: false },
+            "barthe": { name: "Barthe", table: "EBALA", couple: false },
+            "clovis sumbu": { name: "CLOVIS SUMBU", table: "EBALA", couple: false },
+            "john": { name: "JOHN", table: "EBALA", couple: false },
+            "jean": { name: "JEAN", table: "EBALA", couple: false },
             "armel": { name: "ARMEL", table: "EFUNGU", couple: false },
             "gaston": { name: "GASTON", table: "EFUNGU", couple: false },
             "bi jeannette": { name: "BI JEANNETTE", table: "EFUNGU", couple: false },
@@ -531,9 +528,7 @@
             "fr daniel": { name: "Fr DANIEL", table: "KILO KASONGO", couple: false },
             "fr beni": { name: "Fr BENI", table: "KILO KASONGO", couple: false },
             "fr nehemie": { name: "Fr NEHEMIE", table: "KILO KASONGO", couple: false },
-            "sr dorcas lukoki": { name: "Sr DORCAS LUKOKI", table: "KILO KASONGO", couple: false },
-            "dr deborah": { name: "Dr DEBORAH", table: "KILO KASONGO", couple: false },
-            "dr ketsia": { name: "Dr KETSIA", table: "KILO KASONGO", couple: false },
+            "sr merveille lukoki": { name: "Sr Merveille LUKOKI", table: "KILO KASONGO", couple: false },
             "aristote": { name: "ARISTOTE", table: "KILO KASONGO", couple: false },
             "berdy": { name: "BERDY", table: "KILO KASONGO", couple: false },
             "josue": { name: "JOSUE", table: "KILO KASONGO", couple: false },
@@ -546,8 +541,8 @@
             "michee": { name: "MICHEE", table: "ETUSHA", couple: false },
             "grace": { name: "GRACE", table: "ETUSHA", couple: false },
             "samuel": { name: "SAMUEL", table: "ETUSHA", couple: false },
-            "keren": { name: "KEREN", table: "ETUSHA", couple: false },
-            "papa kalala": { name: "PAPA KALALA", table: "KAMWEMO", couple: true },
+            "keren batuli": { name: "KEREN BATULI", table: "ETUSHA", couple: false },
+            "papa kalala": { name: "PAPA KALALA", table: "KAMWEMO", couple: false },
             "pa paulin": { name: "PA PAULIN", table: "KAMWEMO", couple: true },
             "pa dona": { name: "PA DONA", table: "KAMWEMO", couple: true },
             "ma clarisse": { name: "MA CLARISSE", table: "KAMWEMO", couple: true },
@@ -556,8 +551,10 @@
             "pasteur jean": { name: "Pasteur JEAN", table: "ESHADIKA", couple: true },
             "pasteur fredy": { name: "Pasteur FREDY", table: "ESHADIKA", couple: true },
             "pasteur richard": { name: "Pasteur RICHARD", table: "ESHADIKA", couple: true },
-            "papa gaela": { name: "PAPA GAELA", table: "ESHADIKA", couple: true },
-            "bergé gorlin": { name: "Bergé GORLIN", table: "ESHADIKA", couple: true },
+            "pasteur patrick": { name: "Pasteur Patrick", table: "ESHADIKA", couple: true },
+            "berger gorlin": { name: "Berger GORLIN", table: "ESHADIKA", couple: true },
+            "maman dorcas": { name: "MAMAN DORCAS", table: "EPINGA", couple: false },
+            "damaris": { name: "DAMARIS", table: "EPINGA", couple: false },
             "maman colette": { name: "MAMAN COLETTE", table: "EPINGA", couple: false },
             "yvette": { name: "YVETTE", table: "EPINGA", couple: false },
             "maman henriette": { name: "MAMAN HENRIETTE", table: "EPINGA", couple: false },
@@ -581,28 +578,40 @@
         }
 
         const urlParams = new URLSearchParams(window.location.search);
-        const rawNomParam = urlParams.get('nom');
+        const rawNomParam = urlParams.get('nom') || urlParams.get('invite');
 
         let displayName = "Invité(e)";
         let displayTable = "";
         let whatsappMessageName = "un invité";
 
         if (rawNomParam) {
-            const cleanKey = rawNomParam.trim().toLowerCase();
+            const rawDecoded = decodeURIComponent(rawNomParam).trim();
+            const cleanKey = rawDecoded.toLowerCase();
+            
+            let matchedObj = null;
+
             if (database[cleanKey]) {
-                const guestObj = database[cleanKey];
-                const formattedName = formatNameWithPrefix(guestObj.name, guestObj.couple);
-                
-                if (guestObj.couple) {
+                matchedObj = database[cleanKey];
+            } else {
+                for (let k in database) {
+                    if (cleanKey.includes(k) || k.includes(cleanKey)) {
+                        matchedObj = database[k];
+                        break;
+                    }
+                }
+            }
+
+            if (matchedObj) {
+                const formattedName = formatNameWithPrefix(matchedObj.name, matchedObj.couple);
+                if (matchedObj.couple) {
                     displayName = `Couple : ${formattedName}`;
                 } else {
                     displayName = `Invité(e) : ${formattedName}`;
                 }
-                
-                displayTable = `Table attribuée : ${guestObj.table}`;
+                displayTable = `Table attribuée : ${matchedObj.table}`;
                 whatsappMessageName = formattedName;
             } else {
-                const formattedName = formatNameWithPrefix(rawNomParam, false);
+                const formattedName = formatNameWithPrefix(rawDecoded, false);
                 displayName = `Invité(e) : ${formattedName}`;
                 whatsappMessageName = formattedName;
             }
